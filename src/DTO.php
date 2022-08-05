@@ -2,7 +2,6 @@
 
 namespace LDTO;
 
-use Ds\Set;
 use Exception;
 use LDTO\Attr\Convert;
 use LDTO\Converter\DefaultConverter;
@@ -132,7 +131,10 @@ abstract class DTO
     $reflection = new \ReflectionClass($this::class);
     $result = [];
 
-    $exceptKeySet = new Set($exceptKeys);
+    $exceptKeySet = [];
+    foreach($exceptKeys as $key){
+      $exceptKeySet[$key] = true;
+    }
 
     foreach ($reflection->getProperties(\ReflectionProperty::IS_PUBLIC) as $property) {
       $value = $property->getValue($this);
@@ -143,7 +145,7 @@ abstract class DTO
         continue;
       }
 
-      if($exceptKeySet->contains($name)){
+      if(array_key_exists($name, $exceptKeySet)){
         continue;
       }
 
