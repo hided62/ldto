@@ -1,4 +1,7 @@
 <?php
+require __DIR__ . '/../vendor/autoload.php';
+
+error_reporting(E_ALL);
 
 use LDTO\Attr\Convert;
 use LDTO\Attr\DefaultValue;
