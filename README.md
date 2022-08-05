@@ -1,9 +1,16 @@
 # LDTO
 
+<https://packagist.org/packages/hided62/ldto>
+
 A lightweight DTO library inspired by `spatie/data-transfer-object`.
 
 - Attribute based
 - Built-in Enum conversion
+- No external dependency
+
+## Install
+
+`composer require hided62/ldto`
 
 ## Example
 
