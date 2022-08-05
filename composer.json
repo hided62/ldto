@@ -1,0 +1,13 @@
+{
+    "name": "hided62/udto",
+    "description": "php micro dto library",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hide D",
+            "email": "hided62@gmail.com"
+        }
+    ],
+    "require": {}
+}
