@@ -2,14 +2,24 @@
 
 namespace LDTO\Attr;
 
+use Exception;
 use LDTO\Converter\Converter;
 
 #[\Attribute(\Attribute::TARGET_PROPERTY | \Attribute::TARGET_CLASS)]
 class Convert
 {
   public Converter $converter;
+  /** @var string[] */
   public array $targetTypes;
+  /** @var array<mixed> */
   public readonly array $args;
+
+  /**
+   * @param string $converterType
+   * @param array<mixed> $args
+   * @return void
+   * @throws Exception
+   */
   public function __construct(
     public readonly string $converterType,
     ...$args
@@ -20,6 +30,9 @@ class Convert
     $this->args = $args;
   }
 
+  /**
+   * @param string[] $targetTypes
+   */
   public function setType(array $targetTypes): self{
     $this->targetTypes = $targetTypes;
     $converterType = $this->converterType;

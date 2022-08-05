@@ -7,6 +7,7 @@ class JsonString
 {
   public function __construct(
     public readonly bool $emptyItemIsArray = false,
+    public readonly int $maxDepth = 512,
     public readonly int $jsonFlag = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
   ) {
   }

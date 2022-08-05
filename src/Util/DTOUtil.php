@@ -34,7 +34,7 @@ class DTOUtil{
   }
 
   /**
-   * @return array<string>
+   * @return string[]
    */
   public static function getPropTypes(\ReflectionProperty $prop): array{
     $result = [];

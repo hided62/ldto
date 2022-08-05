@@ -2,12 +2,23 @@
 
 namespace LDTO\Converter;
 
+use InvalidArgumentException;
+
 class DateTimeConverter implements Converter
 {
   const YMD_HIS = 'Y-m-d H:i:s';
   const YMD_HISU = 'Y-m-d H:i:s.u';
 
   protected \DateTimeZone $timeZoneOffset;
+
+
+  /**
+   * @param string[] $types
+   * @param string|int|float|null $timezone
+   * @param string $datetimeFormat
+   * @return void
+   * @throws InvalidArgumentException
+   */
   public function __construct(private array $types, string|int|float|null $timezone = null, public readonly string $datetimeFormat = self::YMD_HIS)
   {
     $this->timeZoneOffset = static::extractDateTimeZone($timezone);

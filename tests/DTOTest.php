@@ -16,6 +16,8 @@ use LDTO\Converter\MapConverter;
 use LDTO\Converter\ArrayConverter;
 use LDTO\DTO;
 
+use PHPUnit\Framework\TestCase;
+
 class TypeA extends DTO
 {
   public function __construct(
@@ -84,9 +86,6 @@ class TypeE extends DTO
 
 class ConverterDouble implements Converter
 {
-  public function __construct(array $types, ...$args)
-  {
-  }
   public function convertFrom(string|array|int|float|bool|null $raw, string $name): mixed
   {
     return $raw * 2;
@@ -189,7 +188,7 @@ class TypeDefaultValue extends DTO
     #[DefaultValue(false)]
     public bool $b,
     public int $c,
-    #[DefaultValue([1,2,3])]
+    #[DefaultValue([1, 2, 3])]
     public array $e,
     #[DefaultValueGenerator('returnDateTime')]
     #[Convert(DateTimeConverter::class)]
@@ -216,9 +215,9 @@ class TypeIgnore extends DTO
   }
 }
 
-class DTOTest extends \PHPUnit\Framework\TestCase
+class DTOTest extends TestCase
 {
-  public function testBasic()
+  public function testBasic(): void
   {
     $rawType = [
       'a' => '123',
@@ -233,7 +232,7 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($rawType, $testType);
   }
 
-  public function testNested()
+  public function testNested(): void
   {
     $rawType = [
       'a' => '123',
@@ -248,7 +247,7 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($rawType, $testType);
   }
 
-  public function testNestedJson()
+  public function testNestedJson(): void
   {
     $x = json_encode([
       'ba1' => 3,
@@ -264,7 +263,7 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($rawType, $testType);
   }
 
-  public function testEnum()
+  public function testEnum(): void
   {
     $rawType = [
       'a' => '123',
@@ -276,7 +275,7 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($rawType, $testType);
   }
 
-  public function testNull()
+  public function testNull(): void
   {
     $rawType = [
       'a' => null,
@@ -287,7 +286,7 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($rawType, $testType);
   }
 
-  public function testConverter()
+  public function testConverter(): void
   {
     $rawType = [
       'a' => '123',
@@ -300,7 +299,7 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($rawType, $testType);
   }
 
-  public function testNullIsUndefined()
+  public function testNullIsUndefined(): void
   {
     $rawType = [
       'a' => null,
@@ -313,7 +312,7 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($rawType, $testType);
   }
 
-  public function testArr()
+  public function testArr(): void
   {
     $rawType = [
       'a' => [1, 2, 3],
@@ -325,7 +324,7 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($rawType, $testType);
   }
 
-  public function testArrConverterErr()
+  public function testArrConverterErr(): void
   {
     $this->expectException(Exception::class);
     $rawType = [
@@ -339,7 +338,7 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($rawType, $testType);
   }
 
-  public function testArrConverterErr2()
+  public function testArrConverterErr2(): void
   {
     $this->expectException(Exception::class);
     $rawType = [
@@ -353,7 +352,7 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($rawType, $testType);
   }
 
-  public function testArrConverter()
+  public function testArrConverter(): void
   {
     $rawType = [
       'a' => [1, 2, 3],
@@ -366,7 +365,7 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($rawType, $testType);
   }
 
-  public function testMap()
+  public function testMap(): void
   {
     $rawType = [
       'a' => 1,
@@ -382,7 +381,7 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($rawType, $testType);
   }
 
-  public function testNestedMap()
+  public function testNestedMap(): void
   {
     $rawType = [
       'a' => 1,
@@ -404,7 +403,7 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($rawType, $testType);
   }
 
-  public function testRawName()
+  public function testRawName(): void
   {
     $rawType = [
       'arg_name' => 1,
@@ -416,7 +415,7 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($rawType, $testType);
   }
 
-  public function testDateTime()
+  public function testDateTime(): void
   {
     $rawType = [
       'a' => '2022-01-01 10:11:22',
@@ -437,7 +436,7 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($testValue, $testType);
   }
 
-  public function testDefaultValue()
+  public function testDefaultValue(): void
   {
     $rawType = [
       'c' => 3,
@@ -457,7 +456,8 @@ class DTOTest extends \PHPUnit\Framework\TestCase
     $this->assertEquals($testValue, $testType);
   }
 
-  public function testIgnore(){
+  public function testIgnore(): void
+  {
     $rawType = [
       'a' => 1,
       'b' => 2,

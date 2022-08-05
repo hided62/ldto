@@ -6,11 +6,15 @@ use LDTO\DTO;
 
 class DefaultConverter implements Converter
 {
+  /**
+   * @param string[] $types
+   * @return void
+   */
   public function __construct(private array $types)
   {
   }
 
-  public static function convertFromItem(string $type, $raw, string $name, bool &$success): mixed
+  public static function convertFromItem(string $type, string|array|int|float|bool|null $raw, string $name, bool &$success): mixed
   {
     $success = false;
     if (is_subclass_of($type, \UnitEnum::class)) {
@@ -107,7 +111,7 @@ class DefaultConverter implements Converter
       }
     }
 
-    throw new \Exception('DefaultConverter can not convert '.gettype($raw).": $name as ".join('|', $this->types));
+    throw new \Exception('DefaultConverter can not convert '.gettype($raw).": $name as ".implode('|', $this->types));
   }
 
   public function convertTo(mixed $data): string|array|int|float|bool|null

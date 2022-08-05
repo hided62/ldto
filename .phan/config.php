@@ -429,7 +429,6 @@ return [
     // your application should be included in this list.
     'directory_list' => [
         'src',
-        'tests',
     ],
 
     // List of case-insensitive file extensions supported by Phan.

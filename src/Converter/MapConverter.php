@@ -2,15 +2,25 @@
 
 namespace LDTO\Converter;
 
+use Exception;
+
 class MapConverter implements Converter
 {
   private Converter $itemConverter;
+
+  /**
+   * @param string[] $types
+   * @param string[] $itemTypes
+   * @param null|string $itemConverterClass
+   * @param mixed[] $args
+   * @return void
+   * @throws Exception
+   */
   public function __construct(private array $types, array $itemTypes, ?string $itemConverterClass = null, ...$args)
   {
     if(!is_array($itemTypes)){
       throw new \Exception('itemTypes is not a array');
     }
-    $itemConverterClass = array_shift($args);
     if($itemConverterClass === null){
       $itemConverterClass = DefaultConverter::class;
     }
