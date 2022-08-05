@@ -1,8 +1,8 @@
 <?php
 
-namespace hided62\LDTO\Attr;
+namespace LDTO\Attr;
 
-use hided62\LDTO\Converter\Converter;
+use LDTO\Converter\Converter;
 
 #[\Attribute(\Attribute::TARGET_PROPERTY | \Attribute::TARGET_CLASS)]
 class Convert
@@ -14,7 +14,7 @@ class Convert
     public readonly string $converterType,
     ...$args
   ) {
-    if(!is_subclass_of($converterType, \hided62\LDTO\Converter\Converter::class)){
+    if(!is_subclass_of($converterType, \LDTO\Converter\Converter::class)){
       throw new \Exception("$converterType is not a subclass of DTO\Converter\Converter");
     }
     $this->args = $args;

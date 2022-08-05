@@ -1,5 +1,5 @@
 <?php
-namespace hided62\LDTO\Util;
+namespace LDTO\Util;
 
 class DTOUtil{
   private function __construct()

@@ -3,10 +3,20 @@
     "description": "php lightweight dto library",
     "type": "library",
     "license": "MIT",
+    "keywords": [
+        "dto",
+        "hided62",
+        "lightweight",
+        "data-transfer-object",
+        "serialize"
+    ],
+    "homepage": "https://github.com/hided62/ldto",
     "authors": [
         {
-            "name": "Hide D",
-            "email": "hided62@gmail.com"
+            "name": "Hide_D",
+            "email": "hided62@gmail.com",
+            "homepage": "https://hided.net",
+            "role": "Developer"
         }
     ],
     "require": {
@@ -15,6 +25,9 @@
     },
     "suggest": {
         "ext-ds": "^1.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4" : {

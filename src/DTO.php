@@ -1,10 +1,10 @@
 <?php
 
-namespace hided62\LDTO;
+namespace LDTO;
 
 use Ds\Set;
-use hided62\LDTO\Attr\Convert;
-use hided62\LDTO\Converter\DefaultConverter;
+use LDTO\Attr\Convert;
+use LDTO\Converter\DefaultConverter;
 
 abstract class DTO
 {

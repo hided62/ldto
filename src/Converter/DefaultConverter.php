@@ -1,8 +1,8 @@
 <?php
 
-namespace hided62\LDTO\Converter;
+namespace LDTO\Converter;
 
-use hided62\LDTO\DTO;
+use LDTO\DTO;
 
 class DefaultConverter implements Converter
 {

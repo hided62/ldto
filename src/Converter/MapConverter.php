@@ -1,6 +1,6 @@
 <?php
 
-namespace hided62\LDTO\Converter;
+namespace LDTO\Converter;
 
 class MapConverter implements Converter
 {
@@ -15,7 +15,7 @@ class MapConverter implements Converter
       $itemConverterClass = DefaultConverter::class;
     }
     else if (!is_subclass_of($itemConverterClass, Converter::class)) {
-      throw new \Exception("$itemConverterClass is not a subclass of \hided62\LDTO\Converter\Converter");
+      throw new \Exception("$itemConverterClass is not a subclass of \LDTO\Converter\Converter");
     }
     $this->itemConverter = new $itemConverterClass($itemTypes, ...$args);
   }

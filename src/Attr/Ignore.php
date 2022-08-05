@@ -1,6 +1,6 @@
 <?php
 
-namespace hided62\LDTO\Attr;
+namespace LDTO\Attr;
 
 #[\Attribute(\Attribute::TARGET_PROPERTY)]
 class Ignore

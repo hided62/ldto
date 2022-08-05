@@ -1,6 +1,6 @@
 <?php
 
-namespace hided62\LDTO\Converter;
+namespace LDTO\Converter;
 
 class DateTimeConverter implements Converter
 {
