@@ -10,6 +10,7 @@ abstract class DTO
 {
   public static function fromArray(\ArrayAccess|array $array): static
   {
+    /** @var \ReflectionClass<DTO> */
     $reflection = new \ReflectionClass(static::class);
 
     if ($array instanceof \ArrayAccess) {
